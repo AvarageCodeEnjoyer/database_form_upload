@@ -8,6 +8,6 @@ const formSchema = new mongoose.Schema({
   address: String,
 });
 
-const student = mongoose.model('Student', formSchema);
+const students = mongoose.model('Student', formSchema);
 
-module.exports = student;
+module.exports = students;
