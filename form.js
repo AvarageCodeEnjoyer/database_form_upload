@@ -1,9 +1,16 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+require('dotenv').config();
+
+
+const password = process.env.password
+const name = process.env.name
+
 
 const User = require('./models/FORM.js');
-const mongoURL = 'mongodb+srv://ndross427:9205DRIVE777@cluster0.ipo5a6z.mongodb.net/Form'
+const mongoURL = `mongodb+srv://${name}:${password}@cluster0.ipo5a6z.mongodb.net/Form`
+console.log(mongoURL)
 
 mongoose.connect(mongoURL)
   .then(() => {
