@@ -27,7 +27,7 @@ body {
 form {
   width: 350px;
   height: auto;
-  display: flex;
+  display: grid;
   justify-content: space-between;
   justify-self: center;
   align-self: center;
@@ -35,6 +35,13 @@ form {
   background-color: var(--orange);
   padding: 20px;
   border-radius: 10px;
+}
+
+fieldset {
+  width: 96%;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 #logo {
@@ -49,7 +56,7 @@ form {
   color: white;
   border-radius: 5px;
   text-decoration: none;
-  margin-top: 5px;
+  margin: 5px;
 }
 
 #goBack:hover {
@@ -73,6 +80,16 @@ form {
 
 #userList a:hover {
   color: white;
+}
+
+#userList > h1 {
+  display: flex;
+  justify-content: space-between;
+}
+
+#submitBTN {
+  width: 150px;
+  justify-self: center;
 }
 
 label {
