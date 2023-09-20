@@ -13,7 +13,7 @@
   <img id="logo" src="West-MEC_logo.jpg" alt="West MEC Logo">
   <form action="/formInput" method="post">
     <fieldset>
-      <legend>Update Student Info</legend>
+      <legend>Create New Student</legend>
       <div class="formGroup">
         <label for="fName">First Name:</label>
         <input type="text" name="fName" id="fName">
@@ -35,14 +35,14 @@
         <input type="text" name="address" id="address">
       </div>
     </fieldset>
-    <button type="submit">Create Student</button>
+    <button type="submit" id="submitBTN">Create Student</button>
   </form>
   <div id="userList">
     <% if (users.length == 0) { %>
       <h1>No current users</h1>
     <% } %>
     <% users.forEach(user => { %>
-      <h1><%= user.fName %> |<a href="/editPage/<%= user._id %>">Edit</a>|<a href="/delete/<%= user._id %>">Delete</a>|</h1>
+      <h1><%= user.fName %> <span>| <a href="/viewUser/<%= user._id %>">View</a> |<a href="/editPage/<%= user._id %>">Edit</a>|<a href="/delete/<%= user._id %>">Delete</a>|</span></h1>
     <% }) %>
   </div>
 </body>
