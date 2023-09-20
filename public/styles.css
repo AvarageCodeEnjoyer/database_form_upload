@@ -1,0 +1,67 @@
+:root {
+  --orange: rgb(237, 164, 55);
+  --red: rgb(193, 70, 70);
+}
+
+
+body {
+  background-color: rgb(255, 255, 255);
+  display: grid;
+  font-family: 'Open Sans', sans-serif;
+}
+
+form {
+  width: 350px;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  justify-self: center;
+  align-self: center;
+  flex-direction: column; 
+  background-color: var(--orange);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+#logo {
+  width: 90%;
+  padding: 5%;
+}
+
+#goBack {
+  justify-self: center;
+  padding: 5px;
+  background-color: var(--red);
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-top: 5px;
+}
+
+#userList {
+  justify-self: center;
+  background-color: var(--orange);
+  color: var(--red);
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#userList a {
+  color: white;
+}
+
+label {
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+.formGroup {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+input {
+  width: 200px;
+}
