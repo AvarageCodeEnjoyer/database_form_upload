@@ -1,7 +1,6 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-const { MongoClient } = require('mongodb')
 
 const User = require('./models/FORM.js');
 const mongoURL = 'mongodb+srv://ndross427:9205DRIVE777@cluster0.ipo5a6z.mongodb.net/Form'
