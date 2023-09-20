@@ -27,55 +27,84 @@ app.use(express.urlencoded({ extended: true }));
 
 
 app.get('/', async (req, res) => {
-  let users = await User.find()
-  res.render('newStudent', { users })
+  try {
+    let users = await User.find()
+    res.render('newStudent', { users })
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Internal Server Error from /')
+  }
 })
 
 app.get('/editPage/:id', async (req, res) => {
-  let userID = req.params.id
-  let user = await User.findById(userID)
-  res.render('editPage', { user })
+  try {
+    let userID = req.params.id
+    let user = await User.findById(userID)
+    res.render('editPage', { user })
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Internal Server Error from /editPage/:id')
+  }
 })
 
 app.get('/viewUser/:id', async (req, res) => {
-  let userID = req.params.id
-  let user = await User.findById(userID)
-  res.render('viewUser', { user })
+  try {
+    let userID = req.params.id
+    let user = await User.findById(userID)
+    res.render('viewUser', { user })
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Internal Server Error from /viewUser/:id')
+  }
 })
 
 app.post('/updateUser/:id', async (req, res) => {
-  let body = req.body
-  let updatedData = {
-    fName: body.fName,
-    lName: body.lName,
-    email: body.email,
-    phone: body.phone,
-    address: body.address
+  try {
+    let body = req.body
+    let updatedData = {
+      fName: body.fName,
+      lName: body.lName,
+      email: body.email,
+      phone: body.phone,
+      address: body.address
+    }
+    let userID = req.params.id
+    await User.findByIdAndUpdate(userID, updatedData)
+    res.redirect('/')
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Internal Server Error from /updateUser/:id')
   }
-  let userID = req.params.id
-  await User.findByIdAndUpdate(userID, updatedData)
-  res.redirect('/')
 })
 
 app.get('/delete/:id', async (req, res) => {
-  let userID = req.params.id
-  await User.findByIdAndDelete(userID)
-  res.redirect('/')
+  try {
+    let userID = req.params.id
+    await User.findByIdAndDelete(userID)
+    res.redirect('/')
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Internal Server Error from /delete/:id')
+  }
 })
 
 app.post('/formInput', async (req, res) => {
-  let body = req.body
-  this.formData = {
-    fName: body.fName,
-    lName: body.lName,
-    email: body.email,
-    phone: body.phone,
-    address: body.address
+  try {
+    let body = req.body
+    this.formData = {
+      fName: body.fName,
+      lName: body.lName,
+      email: body.email,
+      phone: body.phone,
+      address: body.address
+    }
+    let newUser = new User(this.formData)
+    await newUser.save()
+    res.redirect('/')
+  } catch (error) {
+    console.error(error)
+    res.status(500).send('Internal Server Error from /formInput')
   }
-
-  let newUser = new User(this.formData)
-  await newUser.save()
-  res.redirect('/')
 })
 
 app.listen(port, () => {
