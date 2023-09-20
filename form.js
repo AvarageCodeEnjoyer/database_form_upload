@@ -38,6 +38,12 @@ app.get('/editPage/:id', async (req, res) => {
   res.render('editPage', { user })
 })
 
+app.get('/viewUser/:id', async (req, res) => {
+  let userID = req.params.id
+  let user = await User.findById(userID)
+  res.render('viewUser', { user })
+})
+
 app.post('/updateUser/:id', async (req, res) => {
   let body = req.body
   let updatedData = {
