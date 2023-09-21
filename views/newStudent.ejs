@@ -29,7 +29,7 @@
       </div>
       <div class="formGroup">
         <label for="phone">Phone:</label>
-        <input type="tel" name="phone" id="phone" onfocusout="return validatePhoneNumber()" required>
+        <input type="number" name="phone" id="phone" onfocusout="return validatePhoneNumber()" required>
       </div>
       <div class="formGroup">
         <label for="address">Address:</label>
@@ -40,6 +40,7 @@
   </form>
   <div id="userList">
     <% if (users.length == 0) { %>
+      <hr>
       <h1>No current users</h1>
     <% } %>
     <hr>
